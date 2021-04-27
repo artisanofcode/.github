@@ -1,0 +1,127 @@
+repository:
+  # Updates the default branch for this repository.
+  default_branch: main
+
+  # Either `true` to allow squash-merging pull requests, or `false` to prevent
+  # squash-merging.
+  allow_squash_merge: true
+
+  # Either `true` to allow merging pull requests with a merge commit, or `false`
+  # to prevent merging pull requests with merge commits.
+  allow_merge_commit: false
+
+  # Either `true` to allow rebase-merging pull requests, or `false` to prevent
+  # rebase-merging.
+  allow_rebase_merge: true
+
+# Labels: define labels for Issues and Pull Requests
+labels:
+  - name: "feat"
+    description: "A new feature"
+    color: "#a2eeef"
+
+  - name: "fix"
+    description: "A bug fix"
+    color: "#d73a4a"
+
+  - name: "docs"
+    description: "Documentation only changes"
+    color: "#0075ca"
+
+  - name: "style"
+    description: "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
+    color: "#a9fa6e"
+
+  - name: "refactor"
+    description: "A code change that neither fixes a bug nor adds a feature"
+    color: "#d93f0b"
+
+  - name: "perf"
+    description: "A code change that improves performance"
+    color: "#10414b"
+
+  - name: "test"
+    description: "Adding missing tests or correcting existing tests"
+    color: "#1428dd"
+
+  - name: "build"
+    description: "Changes that affect the build system or external dependencies"
+    color: "#7eadb6"
+
+  - name: "ci"
+    description: "Changes to our CI configuration files and scripts"
+    color: "#dcf567"
+
+  - name: "chore"
+    description: "Other changes that don't modify src or test files"
+    color: "#63ec15"
+
+  - name: "reverts"
+    description: "Reverts previous changes"
+    color: "#566e7e"
+
+  - name: "BREAKING CHANGE"
+    description: "A change that breaks backwards compatibility"
+    color: "#B60205"
+
+  - name: "duplicate"
+    description: "This issue or pull request already exists"
+    color: "#cfd3d7"
+
+  - name: "good first issue"
+    description: "Good for newcomers"
+    color: "#7057ff"
+
+  - name: "help wanted"
+    description: "Extra attention is needed"
+    color: "#008672"
+
+  - name: "invalid"
+    description: "This doesn't seem right"
+    color: "#e4e669"
+
+  - name: "question"
+    description: "Further information is requested"
+
+  - name: "wontfix"
+    description: "This will not be worked on"
+    color: "#ffffff"
+
+  - name: "pinned"
+    description: "This issue will not be automatically closed"
+    color: "#90e170"
+
+teams:
+  - name: core
+    permission: admin
+
+branches:
+  - name: main
+    # https://developer.github.com/v3/repos/branches/#update-branch-protection
+    # Branch Protection settings. Set to null to disable
+    protection:
+      # Required. Require at least one approving review on a pull request, before merging. Set to null to disable.
+      required_pull_request_reviews:
+        # The number of approvals required. (1-6)
+        required_approving_review_count: 1
+        # Dismiss approved reviews automatically when a new commit is pushed.
+        dismiss_stale_reviews: true
+        # Blocks merge until code owners have reviewed.
+        require_code_owner_reviews: true
+        # Specify which users and teams can dismiss pull request reviews. Pass an empty dismissal_restrictions object to disable. User and team dismissal_restrictions are only available for organization-owned repositories. Omit this parameter for personal repositories.
+        dismissal_restrictions:
+          users: []
+          teams: []
+      # Required. Require status checks to pass before merging. Set to null to disable
+      required_status_checks:
+        # Required. Require branches to be up to date before merging.
+        strict: true
+        # Required. The list of status checks to require in order to merge into this branch
+        contexts: []
+      # Required. Enforce all configured restrictions for administrators. Set to true to enforce required status checks for repository administrators. Set to null to disable.
+      enforce_admins: true
+      # Required. Restrict who can push to this branch. Team and user restrictions are only available for organization-owned repositories. Set to null to disable.
+      restrictions:
+        apps: []
+        users: []
+        teams: []

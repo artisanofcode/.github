@@ -1,0 +1,68 @@
+name: Release Python Package
+
+on:
+  workflow_call:
+    inputs:
+      python_version:
+        required: true
+        type: string
+        default: "3.10"
+      tag_name:
+        required: true
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+      POETRY_PYPI_TOKEN_PYPI:
+        required: true
+
+jobs:
+  release:
+    name: build and release a python package
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: set python version
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ input.python_version }}
+
+    - name: install poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python - --preview
+
+    - name: Update PATH
+      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    - name: configure poetry
+      run: poetry config virtualenvs.in-project true
+
+    - name: set up python cache
+      uses: actions/cache@v3
+      id: python-cache
+      with:
+        path: .venv
+        key: venv-${{ hashFiles('**/poetry.lock') }}
+      
+    - name: ensure cache is healthy
+      if: steps.python-cache.outputs.cache-hit == 'true'
+      run: timeout 10s poetry run pip --version || rm -rf .venv
+    
+    - name: install python dependencies
+      if: steps.python-cache.outputs.cache-hit != 'true'
+      run: poetry install
+
+    - name: build release
+      run: make setup build
+      
+    - name: upload assets
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ inputs.tag_name }}
+        files: dist/*
+
+    - name: publish release
+      run: poetry publish
+      env:
+        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_AUTH_TOKEN }}

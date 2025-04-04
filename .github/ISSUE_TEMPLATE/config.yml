@@ -1,1 +1,9 @@
 blank_issues_enabled: false
+contact_links:
+  - name: "🎓 Community Support"
+    url: "https://github.com/orgs/artisanofcode/discussions"
+    about: "Please ask questions on the discussion board."
+
+  - name: "🎤 Discord Server"
+    url: "https://discord.gg/UHUNR5eyW9"
+    about: "Chat and find support in our discord community."

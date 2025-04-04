@@ -1,0 +1,45 @@
+name: "🚀 Feature request"
+description: "I have a suggestion (and may want to implement it)!"
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Please check whether your feature request is already covered by an existing 
+        issue. If it is, please add a comment to that issue instead of creating a new
+        one.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Please describe the feature you would like to see."
+      placeholder: "A clear and concise description of what the feature is."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: "Motivation"
+      description: "Please describe the motivation behind this feature."
+      placeholder: "An explanation of why this feature is needed and/or important to you."
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "Possible implementation"
+      description: " A possible implementation to the feature."
+      placeholder: "Not obligatory, but how you would implement this feature?"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for your suggestion! We will review it and get back to you as soon as
+        possible.
+
+labels: ["feature"]
+type: "Feature"

@@ -1,0 +1,94 @@
+name: "🐛 Bug report"
+description: "Something isn't working as expected."
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Please check whether your bug report is already covered by an existing issue. 
+        If it is, please add a comment or :+1: to that issue instead of creating a new 
+        one.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Please describe the bug you encountered."
+      placeholder: "A clear and concise description of what the bug is."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: "Motivation"
+      description: "Please describe the how this bug has affected you."
+      placeholder: "An explanation of why you think the behaviour is abnormal."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected behavior"
+      description: "Please describe the expected behavior."
+      placeholder: "What did you expect to happen?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: "Actual behavior"
+      description: "Please describe what actually happened."
+      placeholder: "What actually happened?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce"
+      description: >
+        Provide a link to a live example, or an unambiguous set of steps to reproduce
+        this bug.
+
+        Include code to reproduce if relevant.
+      placeholder: "1.\n2.\n3.\n4.\n5."
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: "Version"
+      description: "Please provide the version of the software you are using."
+      placeholder: "0.0.0 or a4c0c38"
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: "Environment"
+      description: "Please provide the environment you are using."
+      placeholder: "e.g. Python 3.13 on macOS 14.6.1"
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: "Link to code"
+      description: "Please provide a link to the code that is causing the issue."
+      placeholder: "https://github.com/danielknell/site/blob/e1784986ad7d92003505c6d20870cf00125bc0af/foo.py#L3-L4"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: >
+        Thank you for your report! We will review it and get back to you as soon as
+        possible.
+
+labels: ["bug"]
+type: "Bug"

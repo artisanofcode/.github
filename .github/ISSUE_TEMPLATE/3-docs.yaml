@@ -1,0 +1,45 @@
+name: "📚 Documentation issue"
+description: "Something in the documentation doesn't make sense."
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Please check whether your documentation issue is already covered by an existing 
+        issue, and either add a :+1: or comment to that issue instead of creating a new 
+        one.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Please describe the problem you encountered with the documentation."
+      placeholder: "A clear and concise description of what is wrong."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: "Motivation"
+      description: "Please describe the motivation behind this change."
+      placeholder: "An explanation of why this change is needed and/or important to you."
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "Possible solution"
+      description: "A possible solution to the problem."
+      placeholder: "Not obligatory, but how you would fix the problem?"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: >
+        Thank you for your suggestion! We will review it and get back to you as soon as 
+        possible.
+
+labels: ["docs"]
+type: "Task"
